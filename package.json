@@ -1,0 +1,88 @@
+{
+  "name": "store",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
+    "@brazilian-utils/brazilian-utils": "^1.0.0-rc.10",
+    "@iconscout/unicons": "^2.1.9",
+    "@material-ui/core": "latest",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@material-ui/pickers": "3.x.x",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "animate.css": "^4.1.0",
+    "apollo-boost": "^0.4.9",
+    "autoprefixer": "^9.8.4",
+    "babel-plugin-dotenv-import": "^2.1.0",
+    "clean-css-cli": "^4.3.0",
+    "currency.js": "^1.2.2",
+    "final-form": "^4.20.1",
+    "graphql": "^15.0.0",
+    "html-react-parser": "^0.10.5",
+    "izitoast-react": "^1.0.16",
+    "lodash": "^4.17.15",
+    "luxon": "^1.25.0",
+    "moment": "^2.29.1",
+    "mui-rff": "^2.1.15",
+    "postcss-cli": "^7.1.1",
+    "pure-react-carousel": "^1.27.1",
+    "query-string": "^6.13.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-final-form": "^6.5.0",
+    "react-loading": "^2.0.3",
+    "react-meta-tags": "^1.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.1",
+    "typescript": "~3.7.2",
+    "vanilla-masker": "^1.2.0",
+    "yarn": "^1.22.4"
+  },
+  "scripts": {
+    "build:style": "tailwind build src/stylesheets/vendor/tailwind.css -c tailwind.js -o src/stylesheets/vendor/tailwind.generated.css",
+    "build:style:clear": "cleancss -o src/stylesheets/vendor/tailwind.generated.css src/stylesheets/vendor/tailwind.generated.css",
+    "prestart": "yarn build:style && yarn build:style:clear",
+    "prebuild": "yarn build:style && yarn build:style:clear",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "rimraf build/ && npm run build",
+    "deploy": "node deploy.js",
+    "deploy:sandbox": "npm run deploy -- sandbox",
+    "deploy:live": "npm run deploy -- live",
+    "deploy:wineeventos": "npm run deploy -- wineeventos"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.154",
+    "@types/luxon": "^1.25.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/styled-components": "^5.1.0",
+    "@types/vanilla-masker": "^1.2.0",
+    "dotenv": "^8.2.0",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^1.4.6"
+  }
+}

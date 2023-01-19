@@ -1,0 +1,61 @@
+image: node:10
+
+before_script:
+  - apt-get update && apt-get -y install gettext
+  - yarn
+
+stages:
+  # - lint
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - yarn build
+
+sandbox:
+  stage: deploy
+  environment: sandbox
+  needs: ["build"]
+  script:
+    - yarn add aeonian
+    - rm -rf .env.production
+    - mv .env.development .env
+    - yarn deploy:sandbox
+  when: manual
+  artifacts:
+    paths:
+      - build
+
+live:
+  stage: deploy
+  environment: production
+  needs: ["build"]
+  script:
+    - yarn add aeonian
+    - rm -rf .env.development
+    - mv .env.production .env
+    - yarn deploy:live
+  only:
+    - master
+  when: manual
+  artifacts:
+    paths:
+      - build
+
+wineeventos:
+  stage: deploy
+  environment: wineeventos
+  needs: ["build"]
+  script:
+    - yarn add aeonian
+    - rm -rf .env.development
+    - mv .env.production .env
+    - yarn deploy:wineeventos
+  when: manual
+  only:
+    - master
+  artifacts:
+    paths:
+      - build
